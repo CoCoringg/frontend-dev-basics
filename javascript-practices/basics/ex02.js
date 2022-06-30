@@ -9,18 +9,21 @@
     [객체]
     - object
         1. new 생성자함수() 사용해서 생성
-            Number()
-            String()
-            Boolean()
-            Object()
-            Array()
-            Date()
-            Function()
-            RegExp()
+            Number() => object 타입 객체
+            String() => object 타입 객체
+            Boolean() => object 타입 객체
+            Object() => object 타입 객체
+            Array() => object 타입 객체
+            Date() => object 타입 객체
+            Function() => function 타입 객체
+            RegExp() => object 타입 객체
         2. {} 객체 리터럴, JavaScript Object Notation -> JSON
         3. [] 배열 리터럴
         4. null
     - function
+        1. function f() {...}
+        2. var f = function() {...}
+        3. var f - new Function(...);
 */
 
 var u = undefined; // var u; 동일, 선언과 정의의 구분이 없다.
@@ -58,11 +61,20 @@ console.log("n:"+typeof(n));
 
 
 console.log("=====객체2[function type]======");
-function f() {
-
+function f1(a, b) {
+    return a+b;
 }
 
-console.log("f:"+typeof(f));
+var f2 = function(a,b) {
+    return a+b;
+}
+
+var f3 = new Function("a","b","return a+b;");
+
+console.log(f1(10,20), f2(10,20), f3(10,20));
+console.log("f1:"+typeof(f1));
+console.log("f2:"+typeof(f2));
+console.log("f3:"+typeof(f3));
 
 // 원시 타입에 메소드가 호출 될 때 ... 
 // 임시 Wrapper 객체가 만들어져 메소드 호출이 일어난 뒤 사라진다: 유사 객체
