@@ -26,6 +26,19 @@
         3. var f - new Function(...);
 */
 
+/*
+    자바스크립트 객체를 분류하는 또 다른 방법
+    1. 내장(Built-inm Native, Engine) 객체
+        자바스크립트 엔진에 미리 내장되어 있는 객체
+        Number, Boolean, Date, RegExp, ... : 생성자 함수
+        parseInt, serTimeout, setInterval, eval, ... : 일반 함수
+    2. 호스트 객체
+        - 호스트 환경이 브라우저: document, loaction, xmlhttpRequest, window, ...
+        - 호스트 환경이 node.js: os, http, fs, path, ...
+    3. 사용자 객체
+        자바스크립트 엔진이 실행되면서 생성되는 객체들
+*/
+
 var u = undefined; // var u; 동일, 선언과 정의의 구분이 없다.
 var i = 10;
 var s = "Hello World";
