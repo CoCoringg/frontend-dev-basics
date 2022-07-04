@@ -3,6 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script>
+window.addEventListener("load", function(){
+	var imgElement = document.createElement("img");
+	imgElement.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMXX99mqftjigcaRXu_3GOC5fizR90Khea4w&usqp=CAU";
+	imgElement.style.width = "300px";
+	imgElement.alt = "짱구";
+	imgElement.title = "짱구뿌우";
+	setTimeout(function(){
+		document.body.appendChild(imgElement);
+	},2000);
+});
+</script>
 </head>
 <body>
 	<h1 id='h' data-no='10'>DOM(Document Object Model)</h1>
