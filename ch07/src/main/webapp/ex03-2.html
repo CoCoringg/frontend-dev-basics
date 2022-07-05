@@ -6,6 +6,7 @@
 <script>
 $(function(){
 	var $obj = $(".par");
+	console.log($obj.jquery);
 	$obj.click(function(){
 		console.log("clicked:" + this);
 	});
@@ -13,10 +14,6 @@ $(function(){
 	setTimeout(function(){
 		$obj.css('color', 'red');
 	}, 2000);
-
-	setTimeout(function(){
-		$("p").css('font-weight', 'bold');
-	}, 4000);
 
 });
 </script>
