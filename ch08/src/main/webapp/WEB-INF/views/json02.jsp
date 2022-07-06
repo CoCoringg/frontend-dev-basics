@@ -9,31 +9,15 @@
 <title>Insert title here</title>
 <script src="${pageContext.request.contextPath}/jquery/jquery-3.6.0.js"></script>
 <script>
-$(function(){
-	$("button").click(function(){
-		$.ajax({
-			url: "${pageContext.request.contextPath}/api/json",
-			async: true,
-			type: "get",
-			dataType: "json",
-			success: function(response) {
-				if(response.result === 'fail') {
-					console.error(response.message);
-					return;
-				}
-				var vo = response.data;
-				var htmls = "";
-				htmls += ("<h3>"+ vo.no+"</h3>");
-				htmls += ("<h4>"+ vo.name+"</h4>");
-				htmls += ("<h5>"+ vo.message+"</h5>");
-				
-				$("#data").html(htmls);
-			},
-			error: function(xhr, status, error) {
-				console.error(status, error);
-			}
-		});
-	});
+// DOM Load Event
+// 1. load: 모두 다(DOM, CSSOM, img)
+// 2. DOMContentLoaded: DOM만 로딩(CSSOM x, img x)
+window.addEventListener("DOMContentLoaded", function() {
+	document
+		.getElementById("data")
+		.addEventListener("click", function(){
+			var xhr = null;
+		})
 });
 </script>
 </head>
