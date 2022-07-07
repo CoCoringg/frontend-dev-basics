@@ -10,22 +10,30 @@
 <script src="${pageContext.request.contextPath}/jquery/jquery-3.6.0.js"></script>
 <script>
 $(function(){
-	$("button").click(function(){
+	$("button").click(function() {
+		var vo = {
+			name: '둘리',
+			password: '1234',
+			message: '호이~'
+		};
+		
 		$.ajax({
-			url: "${pageContext.request.contextPath}/api/json",
-			async: true,	// default true
-			type: "get",
-			dataType: "json",
-			success: function(response) {	// call back 
+			url: "${pageContext.request.contextPath }/api/post01",
+			type: "post", // method                                       
+			dataType: "json", // 응답 포맷
+			contentType: "application/x-www-form-urlencoded", // 요청 바디 데이터 포맷, default
+			data: $.param(vo),
+			success: function(response) {
 				if(response.result === 'fail') {
 					console.error(response.message);
 					return;
-				}
+				} 
+				
 				var vo = response.data;
 				var htmls = "";
-				htmls += ("<h3>"+ vo.no+"</h3>");
-				htmls += ("<h4>"+ vo.name+"</h4>");
-				htmls += ("<h5>"+ vo.message+"</h5>");
+				htmls += ("<h3>" + vo.no + "</h3>");
+				htmls += ("<h4>" + vo.name + "</h4>");
+				htmls += ("<h5>" + vo.message + "</h5>");
 				
 				$("#data").html(htmls);
 			},
@@ -33,12 +41,14 @@ $(function(){
 				console.error(status, error);
 			}
 		});
+		
+		console.log("send request");
 	});
 });
 </script>
 </head>
 <body>
-	<h1>AJAX test: JSON format Data" $.ajax() 함수 사용하기</h1>
+	<h1>AJAX test: JSON format Data: $.ajax() 함수 사용하기</h1>
 	
 	<button>데이터 가져오기</button>
 	<div id="data"></div>
