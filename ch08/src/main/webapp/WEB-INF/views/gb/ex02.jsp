@@ -10,6 +10,10 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="${pageContext.request.contextPath }/jquery/jquery-3.6.0.js"></script>
 <script>
+/**
+ *	1 .scroll event는 ch07/ex36.html 참고
+  	2. /api/guestbook?sno=10 : sno 보다 작은 row를 top-k(list 0, k) 구현 할 것
+ */
 var render = function(vo, mode) {
 	var htmls = 
 		"<li data-no=''>"+
@@ -22,35 +26,29 @@ var render = function(vo, mode) {
 	$("#list-guestbook")[mode?"append":"prepend"](htmls);
 };
 
+var fetch = function() {
+	$.ajax({
+		url: "/ch08/api/guestbook",
+		type: "get",
+		dataType: "json",
+		success: function(response) {
+			if(response.result !== 'success'){
+				console.error(response.message);
+				return;
+			}
+			
+			response.data.forEach(function(vo){
+				render(vo, true);
+			});
+		}		
+	});
+};
+
 $(function(){
-	$("#add-form").submit(function(event){
-		event.preventDefault();
-		
-		/* Validation */
-		
-		var vo = {};
-		vo.name = $("#input-name").val();
-		vo.password = $("#input-password").val();
-		vo.message = $("#tx-content").val();
-		
-		console.log(vo);
-		
-		$.ajax({
-			url:"/ch08/api/guestbook",
-			type:"post",
-			dataType:"json",
-			contentType: "application/json",
-			data: JSON.stringify(vo),
-			success: function(response) {
-				if(response.result !== 'success') {
-					console.log(response.message);
-					return;
-				}
-				
-				render(response.data);
-			} 
-		});
-	})
+	// ...
+	// ...
+	// ...
+	fetch();
 })
 </script>
 </head>
@@ -64,21 +62,6 @@ $(function(){
 			<input type="submit" value="보내기" />
 		</form>
 		<ul id="list-guestbook">
-
-			<li data-no=''><strong>지나가다가</strong>
-				<p>
-					별루입니다.<br> 비번:1234 -,.-
-				</p> <strong></strong> <a href='' data-no=''>삭제</a></li>
-
-			<li data-no=''><strong>둘리</strong>
-				<p>
-					안녕하세요<br> 홈페이지가 개 굿 입니다.
-				</p> <strong></strong> <a href='' data-no=''>삭제</a></li>
-
-			<li data-no=''><strong>주인</strong>
-				<p>
-					아작스 방명록 입니다.<br> 테스트~
-				</p> <strong></strong> <a href='' data-no=''>삭제</a></li>
 		</ul>
 	</div>
 </body>
