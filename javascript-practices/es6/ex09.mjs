@@ -31,3 +31,4 @@ console.log(math.divide(4,2));
 console.log(math.multiply(4,2));
 console.log(math2.add(4,2));
 console.log(math2.subtract(4,2));
+
